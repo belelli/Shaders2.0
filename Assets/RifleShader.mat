@@ -54,11 +54,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Frecuency: 1
-    - _Fresnel_Intensity: 1
+    - _Frecuency: 20
+    - _Fresnel_Intensity: 109.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 1
+    - _Speed: 60.68
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.24634777, g: 0.5660378, b: 0.18422927, a: 0}
   m_BuildTextureStacks: []
