@@ -20,6 +20,7 @@ public class Portal : MonoBehaviour
             Debug.Log("coillider");
             player.controller.enabled = false;
             other.transform.position = target.position;
+            other.transform.rotation = target.rotation;
             player.controller.enabled = true;
 
         }
