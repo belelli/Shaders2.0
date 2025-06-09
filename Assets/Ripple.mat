@@ -40,7 +40,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveSpeed: 3
-    - _WaveStrength: 0.00000513758
+    - _WaveStrength: 0.0000023226821
     - _Wave_Strength: 2
     m_Colors:
     - _Color: {r: 0.2693129, g: 0.9622642, b: 0.9622642, a: 0.01176471}
