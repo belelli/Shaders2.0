@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlassInteraction : MonoBehaviour
 {
-    public Transform player;
-    public Material glassMaterial; 
+    private Transform player;
+    public Material glassMaterial; // Asigna el material del shader Graph
     public float triggerDistance = 2f;
     public float maxNormalMap = 0.3f;
     public float returnSpeed = 1f;
@@ -13,7 +13,12 @@ public class GlassInteraction : MonoBehaviour
     private float currentNormal = 0f;
     private bool playerNear = false;
     private float timer = 0f;
-    private float cooldownTime = 1.5f; // Tiempo antes de volver a 0
+    public float cooldownTime = 1.5f; // Tiempo antes de volver a 0
+
+    void Start()
+    {
+        player = Camera.main.transform;
+    }
 
     void Update()
     {
@@ -37,6 +42,6 @@ public class GlassInteraction : MonoBehaviour
             }
         }
 
-        glassMaterial.SetFloat("_NormalMap", currentNormal); // Usa el nombre exacto de tu propiedad
+        glassMaterial.SetFloat("_NormalMap", currentNormal); // Verificá que este nombre coincida con el del shader
     }
 }
