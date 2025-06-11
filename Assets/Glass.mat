@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ripple
-  m_Shader: {fileID: -6465566751694194690, guid: 1ceb3f30fe0bf244fb2002b8f206b0f7, type: 3}
+  m_Name: Glass
+  m_Shader: {fileID: -6465566751694194690, guid: b95cb606f024795488b00a37440f08a6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,15 +37,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Frecuencia: 15
+    - _NormalMap: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WaveSpeed: 3
-    - _WaveStrength: 2.2e-44
-    - _Wave_Strength: 2
+    - _alpha: 0
     m_Colors:
-    - _Color: {r: 0.2693129, g: 0.9622642, b: 0.9622642, a: 0.01176471}
+    - _Position: {r: -0, g: 1.96, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1617554047044268749
+--- !u!114 &952175624367172025
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
