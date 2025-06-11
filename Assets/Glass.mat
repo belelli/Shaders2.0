@@ -38,10 +38,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Frecuencia: 15
-    - _NormalMap: 0.1
+    - _NormalMap: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _alpha: 0
+    - _alpha: 0.61
     m_Colors:
     - _Position: {r: -0, g: 1.96, b: 0, a: 0}
   m_BuildTextureStacks: []
