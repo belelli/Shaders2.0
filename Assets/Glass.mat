@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Frecuencia: 15
-    - _NormalMap: 0
+    - _NormalMap: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _alpha: 0
