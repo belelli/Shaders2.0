@@ -44,9 +44,9 @@ Material:
     - _Dissolve_Ammount: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 5
+    - _Scale: 6.1
     - _Speed: 0.2
-    - _TwirlStrength: 17
+    - _TwirlStrength: 21.4
     m_Colors:
     - _Color: {r: 3.394085, g: 34.667408, b: 65.41327, a: 0}
   m_BuildTextureStacks: []
