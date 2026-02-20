@@ -10,6 +10,11 @@ public class DissolveController : MonoBehaviour
     private bool isDissolving = false;
     private bool hasFullyDissolved = false;
 
+    private void Start()
+    {
+        dissolveMaterial.SetFloat("_DisolveAmount", 0f);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,7 +45,7 @@ public class DissolveController : MonoBehaviour
                 if (rend != null) rend.enabled = false;
 
                 // (Opcional) Destruir el objeto tras 1 segundo
-                // Destroy(gameObject, 1f);
+                //Destroy(gameObject, 1f);
             }
         }
     }
