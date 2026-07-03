@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2934746661470926595
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Nano - Copy
-  m_Shader: {fileID: -6465566751694194690, guid: a868d08f5a2b66a46b3389ffd213f3fb, type: 3}
+  m_Name: Rejilla
+  m_Shader: {fileID: -6465566751694194690, guid: e395c5c753901a048a0bd7b9963fa548, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -50,11 +37,23 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Progreso: 0.24663162
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RadioEscaneo: 4
     m_Colors:
-    - _Color: {r: 0, g: 0.24910007, b: 0.9622642, a: 0}
-    - _Color_1: {r: 0.3490566, g: 0.31448025, b: 0.31448025, a: 0}
-    - _Color_2: {r: 0, g: 0.9187336, b: 1, a: 0}
+    - _Color: {r: 5.340313, g: 0, b: 0.09399747, a: 0}
+    - _PlayerPosition: {r: 0.20974153, g: 0.9, b: 12.45843, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &6948573194001754275
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
