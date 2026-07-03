@@ -42,7 +42,7 @@ Material:
     - _RadioEscaneo: 4
     m_Colors:
     - _Color: {r: 5.340313, g: 0, b: 0.09399747, a: 0}
-    - _PlayerPosition: {r: 2.1915123, g: 0.9, b: -20.761692, a: 0}
+    - _PlayerPosition: {r: 2.432018, g: 0.9, b: -21.766026, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6948573194001754275
 MonoBehaviour:
