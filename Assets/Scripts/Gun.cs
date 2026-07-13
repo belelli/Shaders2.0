@@ -10,6 +10,11 @@ public class Gun : MonoBehaviour
 
     [Header("Spawn Point")]
     [SerializeField] private Transform bulletOrigin;
+    
+    [Header("Fire")]
+    [SerializeField] private float fireCooldown = 0.25f;
+    
+    private float nextFireTime;
 
     private int currentBulletType = 1;
 
@@ -34,9 +39,10 @@ public class Gun : MonoBehaviour
 
     private void HandleShoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
         {
             Shoot();
+            nextFireTime = Time.time + fireCooldown;
         }
     }
 
