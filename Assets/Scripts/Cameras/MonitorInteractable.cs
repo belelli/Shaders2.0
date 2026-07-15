@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonitorInteractable : MonoBehaviour
 {
     [SerializeField] private CameraMonitorManager cameraManager;
+    
 
     private bool playerInside;
 

@@ -11,6 +11,8 @@ public class CameraMonitorManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] private MonoBehaviour playerMovement;
     [SerializeField] private MonoBehaviour mouseLook;
+    
+    [SerializeField] private GameObject monitorCanvas;
 
     private bool monitorMode = false;
     private int currentCamera = 0;
@@ -58,6 +60,8 @@ public class CameraMonitorManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+        monitorCanvas.SetActive(true);
     }
 
     public void ExitMonitorMode()
@@ -77,6 +81,8 @@ public class CameraMonitorManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        monitorCanvas.SetActive(false);
     }
 
     private void NextCamera()
