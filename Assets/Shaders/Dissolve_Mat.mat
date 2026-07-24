@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2934746661470926595
+--- !u!114 &-5613354997511545977
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Nano - Copy
-  m_Shader: {fileID: -6465566751694194690, guid: a868d08f5a2b66a46b3389ffd213f3fb, type: 3}
+  m_Name: Dissolve_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: a1aeba7fd08218a49999823cb1221a97, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -50,11 +50,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Progreso: 0.016590118
+    - _DisolveAmount: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors:
-    - _Color: {r: 0, g: 0.24910007, b: 0.9622642, a: 0}
-    - _Color_1: {r: 0.34945056, g: 0.44313726, b: 0.22745098, a: 0}
-    - _Color_2: {r: 0, g: 0.9187336, b: 1, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []

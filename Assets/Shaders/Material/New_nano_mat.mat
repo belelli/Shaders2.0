@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Nano - Copy
+  m_Name: New_nano_mat
   m_Shader: {fileID: -6465566751694194690, guid: a868d08f5a2b66a46b3389ffd213f3fb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,11 +50,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Progreso: 0.016590118
+    - _Progreso: 0.9383774
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Color: {r: 0, g: 0.24910007, b: 0.9622642, a: 0}
-    - _Color_1: {r: 0.34945056, g: 0.44313726, b: 0.22745098, a: 0}
+    - _Color_1: {r: 0.3490566, g: 0.31448025, b: 0.31448025, a: 0}
     - _Color_2: {r: 0, g: 0.9187336, b: 1, a: 0}
   m_BuildTextureStacks: []
