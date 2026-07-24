@@ -6,15 +6,15 @@ public class Projectile : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        // Intentamos obtener el componente DissolveAndDestroy del objeto impactado
-        DissolveAndDestroy targetDissolve = other.GetComponent<DissolveAndDestroy>();
+        // Busca el script DissolveAndDestroy en 'other' o sube por la jerarquía hasta encontrar al Padre
+        DissolveAndDestroy targetDissolve = other.GetComponentInParent<DissolveAndDestroy>();
 
         if (targetDissolve != null)
         {
-            // Activamos el efecto de disolución y posterior destrucción
+            // Detona el dissolve en el padre e hijos
             targetDissolve.ImpactAndDestroy();
             
-            // Destruimos la bala al impactar
+            // Destruye la bala inmediatamente
             Destroy(gameObject);
         }
     }

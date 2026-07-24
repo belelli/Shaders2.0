@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DissolveAndDestroy : MonoBehaviour
 {
-    [Header("Settings")]
+[Header("Settings")]
     public float dissolveDuration = 1.5f;
     public string progressProperty = "_Progreso";
 
@@ -13,49 +13,64 @@ public class DissolveAndDestroy : MonoBehaviour
 
     [Header("Shader Logic")]
     [Tooltip("Marcar si 0 es Visible y 1 es Invisible. Desmarcar si es al revés.")]
-    public bool zeroIsFullyVisible = false; 
+    public bool zeroIsFullyVisible = false;
 
-    private Renderer objectRenderer;
-    private Material instantiatedDissolveMaterial;
+    [Header("Immediate Cleanup")]
+    [Tooltip("Arrastrá acá objetos hijos (como 'Effects') que quieras apagar INMEDIATAMENTE al recibir el impacto")]
+    public List<GameObject> immediateDisableObjects = new List<GameObject>();
+
+    private List<Material> instantiatedMaterials = new List<Material>();
     private bool isDisappearing = false;
-
-    void Awake()
-    {
-        objectRenderer = GetComponent<Renderer>();
-    }
 
     public void ImpactAndDestroy()
     {
-        if (isDisappearing || objectRenderer == null || dissolveMaterialTemplate == null) return;
+        if (isDisappearing || dissolveMaterialTemplate == null) return;
 
-        // 1. Guardamos la textura y color original
-        Texture originalTexture = objectRenderer.material.mainTexture;
-        Color originalColor = objectRenderer.material.HasProperty("_Color") 
-            ? objectRenderer.material.color 
-            : Color.white;
-
-        // 2. Creamos la instancia del material
-        instantiatedDissolveMaterial = new Material(dissolveMaterialTemplate);
-
-        // 3. Le pasamos textura y color
-        if (originalTexture != null)
+        // 1. Apagamos inmediatamente los GameObjects que no llevan dissolve (ej: Effects)
+        foreach (GameObject obj in immediateDisableObjects)
         {
-            instantiatedDissolveMaterial.mainTexture = originalTexture;
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
         }
 
-        if (instantiatedDissolveMaterial.HasProperty("_BaseColor"))
-        {
-            instantiatedDissolveMaterial.SetColor("_BaseColor", originalColor);
-        }
+        // 2. Buscamos TODOS los Renderers en este GameObject y en sus hijos
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
-        // 4. Calculamos el valor inicial de visibilidad TOTAL antes de mostrarlo
+        if (renderers.Length == 0) return;
+
         float startValue = zeroIsFullyVisible ? 0f : 1f;
-        instantiatedDissolveMaterial.SetFloat(progressProperty, startValue);
 
-        // 5. RECIÉN AHORA le asignamos el material al Renderer (evita el parpadeo)
-        objectRenderer.material = instantiatedDissolveMaterial;
+        // 3. A cada Renderer activo le asignamos el material de dissolve
+        foreach (Renderer rend in renderers)
+        {
+            // Ignoramos renderers que se hayan desactivado en el paso 1
+            if (rend == null || !rend.gameObject.activeInHierarchy || rend.material == null) continue;
 
-        // 6. Arrancamos la corrutina
+            Texture originalTexture = rend.material.mainTexture;
+            Color originalColor = rend.material.HasProperty("_Color") 
+                ? rend.material.color 
+                : Color.white;
+
+            Material newDissolveMat = new Material(dissolveMaterialTemplate);
+
+            if (originalTexture != null)
+            {
+                newDissolveMat.mainTexture = originalTexture;
+            }
+
+            if (newDissolveMat.HasProperty("_BaseColor"))
+            {
+                newDissolveMat.SetColor("_BaseColor", originalColor);
+            }
+
+            newDissolveMat.SetFloat(progressProperty, startValue);
+            rend.material = newDissolveMat;
+
+            instantiatedMaterials.Add(newDissolveMat);
+        }
+
         StartCoroutine(DissolveRoutine());
     }
 
@@ -63,11 +78,11 @@ public class DissolveAndDestroy : MonoBehaviour
     {
         isDisappearing = true;
 
-        // Desactivamos el Collider para no recibir más impactos
-        Collider objectCollider = GetComponent<Collider>();
-        if (objectCollider != null)
+        // Desactivamos los Colliders para evitar dobles impactos
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
         {
-            objectCollider.enabled = false;
+            col.enabled = false;
         }
 
         float elapsedTime = 0f;
@@ -77,24 +92,28 @@ public class DissolveAndDestroy : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float normalizedTime = Mathf.Clamp01(elapsedTime / dissolveDuration);
 
-            // Invertimos la dirección de la animación según la lógica de tu Shader
             float progress = zeroIsFullyVisible 
                 ? normalizedTime 
                 : (1f - normalizedTime);
 
-            if (instantiatedDissolveMaterial != null)
+            foreach (Material mat in instantiatedMaterials)
             {
-                instantiatedDissolveMaterial.SetFloat(progressProperty, progress);
+                if (mat != null)
+                {
+                    mat.SetFloat(progressProperty, progress);
+                }
             }
 
             yield return null;
         }
 
-        // Valor final de invisibilidad total
         float endValue = zeroIsFullyVisible ? 1f : 0f;
-        if (instantiatedDissolveMaterial != null)
+        foreach (Material mat in instantiatedMaterials)
         {
-            instantiatedDissolveMaterial.SetFloat(progressProperty, endValue);
+            if (mat != null)
+            {
+                mat.SetFloat(progressProperty, endValue);
+            }
         }
 
         Destroy(gameObject);
