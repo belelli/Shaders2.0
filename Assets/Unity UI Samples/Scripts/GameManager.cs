@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Menu.SetActive(false);
+        Pause();
     }
 
     // Update is called once per frame
@@ -19,11 +19,16 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Menu.SetActive(true);
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;   
-            gun.enabled = false;
+            Pause();
         }
+    }
+
+    public void Pause()
+    {
+        Menu.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;   
+        gun.enabled = false;
     }
 }

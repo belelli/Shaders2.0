@@ -39,7 +39,17 @@ public class MonitorInteractable : MonoBehaviour
 
     private void Update()
     {
-        if (playerInside && Input.GetKeyDown(KeyCode.E))
+        if (!Input.GetKeyDown(KeyCode.E))
+            return;
+
+        if (cameraManager.IsInMonitorMode())
+        {
+            cameraManager.ExitMonitorMode();
+            InteractCanvas.SetActive(playerInside);
+            return;
+        }
+
+        if (playerInside)
         {
             cameraManager.EnterMonitorMode();
             InteractCanvas.SetActive(false);

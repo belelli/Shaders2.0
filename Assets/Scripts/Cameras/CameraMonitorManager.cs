@@ -36,10 +36,14 @@ public class CameraMonitorManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             PreviousCamera();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ExitMonitorMode();
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        //     ExitMonitorMode();
     }
 
+    public bool IsInMonitorMode()
+    {
+        return monitorMode;
+    }
     public void EnterMonitorMode()
     {
         if (monitorMode)
