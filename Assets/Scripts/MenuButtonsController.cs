@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuButtonsController : MonoBehaviour
 {
+    public Gun gun;
+    //public GameObject Menu;
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -16,7 +18,11 @@ public class MenuButtonsController : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Parcial2");
+        //Menu.SetActive(false);
+        this.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        gun.enabled = true;
     }
 
     public void Instructions()
