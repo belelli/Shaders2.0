@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class MenuButtonsController : MonoBehaviour
 {
     public Gun gun;
+
+    public GameObject instructionsPanel;
+
+    public GameObject mainPanel;
     //public GameObject Menu;
     public void MainMenu()
     {
@@ -18,7 +22,6 @@ public class MenuButtonsController : MonoBehaviour
 
     public void Play()
     {
-        //Menu.SetActive(false);
         this.gameObject.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -27,6 +30,12 @@ public class MenuButtonsController : MonoBehaviour
 
     public void Instructions()
     {
-        //SceneManager.LoadScene("Instructions");
+        mainPanel.SetActive(false);
+        instructionsPanel.SetActive(true);
+    }
+    public void Back()
+    {
+        mainPanel.SetActive(true);
+        instructionsPanel.SetActive(false);
     }
 }
