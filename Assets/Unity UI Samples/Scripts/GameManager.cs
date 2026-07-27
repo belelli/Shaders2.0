@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,7 +55,10 @@ public class GameManager : MonoBehaviour
         if (dronesDestroyed >= totalDrones)
         {
             Debug.Log("All drones destroyed!");
-            Pause();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;   
+
+            SceneManager.LoadScene("WinScene");
         }
     }
 }
