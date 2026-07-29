@@ -39,10 +39,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RadioEscaneo: 4
+    - _RadioEscaneo: 6.6733294
     m_Colors:
     - _Color: {r: 5.340313, g: 0, b: 0.09399747, a: 0}
-    - _PlayerPosition: {r: -12.83054, g: 0.9, b: 8.731355, a: 0}
+    - _PlayerPosition: {r: -9.9, g: 0.9, b: -2.03, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6948573194001754275
 MonoBehaviour:
