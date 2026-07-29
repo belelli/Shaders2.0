@@ -118,3 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb86ab42776ca4fa058c8a038c4480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 8687638703829651417}
+  life3Color: {r: 0.9056604, g: 0.056959674, b: 0.7761274, a: 0}
+  life2Color: {r: 0.9622642, g: 0.6407598, b: 0.07867563, a: 0}
+  life1Color: {r: 0.8679245, g: 0.23171589, b: 0.038210433, a: 0}
