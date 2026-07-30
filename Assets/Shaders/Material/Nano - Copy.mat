@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Progreso: 0.00005722046
+    - _Progreso: 0.42914963
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
