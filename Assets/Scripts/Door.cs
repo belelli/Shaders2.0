@@ -1,49 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private Transform doorMesh;
+    [Header("Movement")]
     [SerializeField] private float moveDistance = 2f;
     [SerializeField] private float moveDuration = 1f;
 
-    private Vector3 closedPosition;
-    private Vector3 openPosition;
+    private Vector3 startPosition;
+    private Vector3 endPosition;
 
     private void Start()
     {
-        closedPosition = doorMesh.localPosition;
-        openPosition = closedPosition + Vector3.down * moveDistance;
+        startPosition = transform.localPosition;
+        endPosition = startPosition + Vector3.up * moveDistance;
+
+        StartCoroutine(OpenDoor());
     }
 
-    public void Open()
+    private IEnumerator OpenDoor()
     {
-        StopAllCoroutines();
-        StartCoroutine(MoveDoor(openPosition));
-    }
-
-    public void Close()
-    {
-        StopAllCoroutines();
-        StartCoroutine(MoveDoor(closedPosition));
-    }
-
-    private IEnumerator MoveDoor(Vector3 targetPosition)
-    {
-        Vector3 startPosition = doorMesh.localPosition;
         float elapsed = 0f;
 
         while (elapsed < moveDuration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / moveDuration);
 
-            doorMesh.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            float t = Mathf.Clamp01(elapsed / moveDuration);
+            transform.localPosition = Vector3.Lerp(startPosition, endPosition, t);
 
             yield return null;
         }
 
-        doorMesh.localPosition = targetPosition;
+        transform.localPosition = endPosition;
     }
 }
