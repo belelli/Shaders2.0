@@ -17,6 +17,11 @@ public class Door : MonoBehaviour
         startPosition = transform.localPosition;
         endPosition = startPosition + Vector3.up * moveDistance;
 
+        //StartCoroutine(OpenDoor());
+    }
+    
+    public void Open()
+    {
         StartCoroutine(OpenDoor());
     }
 
