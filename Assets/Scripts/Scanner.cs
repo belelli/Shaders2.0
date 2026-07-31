@@ -4,31 +4,44 @@ using UnityEngine;
 
 public class Scanner : MonoBehaviour
 {
-[SerializeField] private Renderer targetRenderer;
+    [SerializeField] private Material scannerMaterial;
 
-[SerializeField] private Material scannerMaterial;
+    [SerializeField] private float minRadius = 3f;
+    [SerializeField] private float maxRadius = 10f;
+    [SerializeField] private float speed = 2f;
 
-[SerializeField] private float minRadius = 3f;
-[SerializeField] private float maxRadius = 10f;
-[SerializeField] private float speed = 2f;
+    private float currentRadius;
+    private bool scanning = false;
 
-private float currentRadius;
-
-private void Start()
-{
-    currentRadius = minRadius;
-    scannerMaterial.SetFloat("_RadioEscaneo", currentRadius);
-}
-
-private void Update()
-{
-    currentRadius += speed * Time.deltaTime;
-
-    if (currentRadius >= maxRadius)
+    private void Start()
     {
         currentRadius = minRadius;
+        scannerMaterial.SetFloat("_RadioEscaneo", currentRadius);
+        
+        //prueba
+        StartScan();
     }
 
-    scannerMaterial.SetFloat("_RadioEscaneo", currentRadius);
-}
+    private void Update()
+    {
+        if (!scanning)
+            return;
+
+        currentRadius += speed * Time.deltaTime;
+
+        if (currentRadius >= maxRadius)
+        {
+            currentRadius = maxRadius;
+            scanning = false;
+        }
+
+        scannerMaterial.SetFloat("_RadioEscaneo", currentRadius);
+    }
+
+    public void StartScan()
+    {
+        currentRadius = minRadius;
+        scannerMaterial.SetFloat("_RadioEscaneo", currentRadius);
+        scanning = true;
+    }
 }
