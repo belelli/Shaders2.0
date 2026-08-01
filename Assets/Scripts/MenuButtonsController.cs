@@ -17,6 +17,7 @@ public class MenuButtonsController : MonoBehaviour
 
     public void Quit()
     {
+        Debug.Log("Quit button pressed");
         Application.Quit();
     }
 
